@@ -1,0 +1,42 @@
+#!/nix/store/izpf49b74i15pcr9708s3xdwyqs4jxwl-bash-5.2p32/bin/bash
+
+source /nix/store/mhxn5kwnri3z9hdzi3x0980id65p0icn-lib.sh
+
+systemConfig='/nix/store/v8jah7z6pqj7wacs6lnb1lkr4rksly4k-nixos-system-nixos-24.11pre685764.1925c603f17f'
+
+export PATH=/empty
+for i in /nix/store/0kg70swgpg45ipcz3pr2siidq9fn6d77-coreutils-9.5 /nix/store/vsyc8jhsr4d9lm2r8yqq9n3j4i66inlj-gnugrep-3.11 /nix/store/fnq94lw19pnwdl9p8zhfrad4jmlgxlbr-findutils-4.10.0 /nix/store/8ywpryh3ngx85xwncilv1hgvk60ickl1-getent-glibc-2.39-52 /nix/store/k4jv8fr725amxalmplzhnlyik93wvk3z-glibc-2.39-52-bin /nix/store/jym4iki8xqvxldgyqjahki11myfpsfbd-shadow-4.16.0 /nix/store/4ldncp8hbqh5r44p3jfmp9jy1qzqdcaw-net-tools-2.10 /nix/store/f3mrhapkqr1lds8x58fh6rwm1lwh8y8c-util-linux-2.39.4-bin; do
+    PATH=$PATH:$i/bin:$i/sbin
+done
+
+_status=0
+trap "_status=1 _localstatus=\$?" ERR
+
+# Ensure a consistent umask.
+umask 0022
+
+#### Activation script snippet stdio does not support dry activation.
+#### Activation script snippet binsh does not support dry activation.
+#### Activation script snippet users:
+_localstatus=0
+install -m 0700 -d /root
+install -m 0755 -d /home
+
+/nix/store/nmg6m9f781rkssk9qknx6pqhvjki4fg9-perl-5.38.2-env/bin/perl \
+-w /nix/store/sll7fxa3fgbrjacmn3hbqi2avjlqij2k-update-users-groups.pl /nix/store/c4ramzr0m5f5592gaxkqr8274ncbc3nb-users-groups.json
+
+
+if (( _localstatus > 0 )); then
+  printf "Activation script snippet '%s' failed (%s)\n" "users" "$_localstatus"
+fi
+
+#### Activation script snippet groups does not support dry activation.
+#### Activation script snippet etc does not support dry activation.
+#### Activation script snippet hashes does not support dry activation.
+#### Activation script snippet specialfs does not support dry activation.
+#### Activation script snippet modprobe does not support dry activation.
+#### Activation script snippet udevd does not support dry activation.
+#### Activation script snippet usrbinenv does not support dry activation.
+#### Activation script snippet var does not support dry activation.
+
+
