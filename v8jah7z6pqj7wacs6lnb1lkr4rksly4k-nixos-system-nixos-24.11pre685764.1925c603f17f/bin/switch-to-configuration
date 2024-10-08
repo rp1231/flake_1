@@ -1,8 +1,0 @@
-#! /nix/store/izpf49b74i15pcr9708s3xdwyqs4jxwl-bash-5.2p32/bin/bash -e
-export OUT='/nix/store/v8jah7z6pqj7wacs6lnb1lkr4rksly4k-nixos-system-nixos-24.11pre685764.1925c603f17f'
-export TOPLEVEL='/nix/store/v8jah7z6pqj7wacs6lnb1lkr4rksly4k-nixos-system-nixos-24.11pre685764.1925c603f17f'
-export DISTRO_ID='nixos'
-export INSTALL_BOOTLOADER='/nix/store/9vy975yx6xqykf8h2xildzjljl7z02h1-install-systemd-boot.sh'
-export LOCALE_ARCHIVE='/nix/store/5xph7xzz5c6fav87lrrm5nr2p9y458lh-glibc-locales-2.39-52/lib/locale/locale-archive'
-export SYSTEMD='/nix/store/1lbc6v5p1a3rn4rjaqnz0694xfbq8dxq-systemd-256.4'
-exec -a "$0" "/nix/store/v8jah7z6pqj7wacs6lnb1lkr4rksly4k-nixos-system-nixos-24.11pre685764.1925c603f17f/bin/.switch-to-configuration-wrapped"  "$@" 
